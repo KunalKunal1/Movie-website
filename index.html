@@ -5,58 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Global Movie Hub</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>🎬 Global Movie Hub</h1>
+    <div class="logo">
+        🎬 Global Movie Hub
+        <span class="author">By Kunal Mhaisane</span>
+    </div>
+
     <nav>
         <a onclick="showSection('home')">Home</a>
         <a onclick="showSection('movies')">Movies</a>
         <a onclick="showSection('add')">Add Movie</a>
+        <a onclick="showSection('login')">Login</a>
+        <button onclick="toggleTheme()" class="theme-btn">🌙</button>
     </nav>
 </header>
 
+<!-- HOME -->
 <section id="home" class="section active">
     <div class="hero">
         <h2>Discover Movies Worldwide</h2>
-        <p>Search, Filter, Explore & Add Your Favorites</p>
+        <p>Premium Portfolio Movie Platform</p>
     </div>
 </section>
 
+<!-- LOGIN -->
+<section id="login" class="section">
+    <div class="auth-box">
+        <h2>User Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+
+        <h3>Admin Login</h3>
+        <input type="password" id="adminPass" placeholder="Admin Password">
+        <button onclick="adminLogin()">Admin Login</button>
+    </div>
+</section>
+
+<!-- MOVIES -->
 <section id="movies" class="section">
     <div class="controls">
-        <input type="text" id="searchBar" placeholder="Search movie..." onkeyup="searchMovies()">
-
-        <select id="countryFilter" onchange="filterMovies()">
-            <option value="">All Countries</option>
-        </select>
-
-        <select id="languageFilter" onchange="filterMovies()">
-            <option value="">All Languages</option>
-        </select>
+        <input type="text" id="searchBar" placeholder="Search..." onkeyup="searchMovies()">
+        <select id="countryFilter" onchange="filterMovies()"></select>
+        <select id="languageFilter" onchange="filterMovies()"></select>
     </div>
-
     <div id="movieContainer" class="movie-grid"></div>
 </section>
 
+<!-- ADD MOVIE -->
 <section id="add" class="section">
-    <h2>Add New Movie</h2>
-    <form id="movieForm">
-        <input type="text" id="title" placeholder="Movie Title" required>
-        <input type="text" id="country" placeholder="Country" required>
-        <input type="text" id="language" placeholder="Language" required>
-        <input type="number" id="year" placeholder="Release Year" required>
-        <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5" required>
-        <input type="text" id="poster" placeholder="Poster Image URL" required>
-        <textarea id="description" placeholder="Description" required></textarea>
-        <button type="submit">Add Movie</button>
-    </form>
+    <div class="auth-box">
+        <h2>Add Movie (Admin Only)</h2>
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="country" placeholder="Country">
+        <input type="text" id="language" placeholder="Language">
+        <input type="number" id="year" placeholder="Year">
+        <input type="number" id="rating" placeholder="Rating 1-5">
+        <input type="text" id="poster" placeholder="Poster URL">
+        <input type="text" id="trailer" placeholder="YouTube Trailer Link">
+        <textarea id="description" placeholder="Description"></textarea>
+        <button onclick="addMovie()">Add Movie</button>
+    </div>
 </section>
+
+<!-- TRAILER MODAL -->
+<div id="trailerModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModal()" class="close">&times;</span>
+        <iframe id="trailerFrame" width="100%" height="400" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-section">
+        <h4>About</h4>
+        <p>Premium Movie Portfolio Platform built for modern web showcase.</p>
+    </div>
+    <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: kunal@example.com</p>
+    </div>
+    <div class="footer-section">
+        <h4>Feedback</h4>
+        <p>Send suggestions for improvements.</p>
+    </div>
+    <div class="footer-section">
+        <h4>Report</h4>
+        <p>Report issues or bugs.</p>
+    </div>
+</footer>
 
 <script src="script.js"></script>
 </body>
